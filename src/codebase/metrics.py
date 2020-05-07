@@ -105,6 +105,29 @@ def DP(Ypred, A): #demographic disparity
 def NLL(Y, Ypred, eps=eps):
     return -np.mean(np.multiply(Y, np.log(Ypred + eps)) + np.multiply(1. - Y, np.log(1 - Ypred + eps)))
 
+# Individual Fairness metrics
+def compute_distances(X, Z):
+    row_norms_X = np.sum(np.square(X), axis=1)
+    row_norms_X.reshape(-1, 1)
+    dX = row_norms_X - 2 * np.matmul(X, np.transpose(X)) + np.transpose(row_norms_X)
+
+    row_norms_Z = np.sum(np.square(Z), axis=1)
+    row_norms_Z.reshape(-1, 1)
+    dZ = row_norms_Z - 2 * np.matmul(Z, np.transpose(Z)) + np.transpose(row_norms_Z)
+
+    dX = dX[np.triu_indices(dX.shape[0], 1)]
+    dZ = dZ[np.triu_indices(dZ.shape[0], 1)]
+
+    nonzero_mask = np.logical_not(np.abs(dX) < 1e-3)
+
+    return dZ[nonzero_mask] / dX[nonzero_mask]
+
+def max_ratio(X, Z):
+    return np.max(compute_distances(X, Z))
+
+def avg_ratio(X, Z):
+    return np.mean(compute_distances(X, Z))
+
 if __name__ == '__main__':
     Y = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
     Ypred = np.array([0.9, 0.8, 0.7, 0.3, 0.2, 0.1, 0.2, 0.3, 0.8, 0.9])

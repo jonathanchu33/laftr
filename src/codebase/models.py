@@ -14,6 +14,7 @@ HIDDEN_LAYER_SPECS = {  # format as dict that maps network to list of hidden lay
 CLASS_COEFF = 1.
 FAIR_COEFF = 0.
 RECON_COEFF = 0.
+IND_COEFF = 1. # Individual Fairness
 XDIM = 61
 YDIM = 1
 ZDIM = 10
@@ -24,6 +25,7 @@ AY_WTS = [[1., 1.], [1., 1.]]
 SEED = 0
 ACTIV = 'leakyrelu'
 HINGE = 0.
+M = 1
 
 
 class AbstractBaseNet(ABC):
@@ -31,6 +33,7 @@ class AbstractBaseNet(ABC):
                  recon_coeff=RECON_COEFF,
                  class_coeff=CLASS_COEFF,
                  fair_coeff=FAIR_COEFF,
+                 ind_coeff=IND_COEFF,
                  xdim=XDIM,
                  ydim=YDIM,
                  zdim=ZDIM,
@@ -38,10 +41,12 @@ class AbstractBaseNet(ABC):
                  hidden_layer_specs=HIDDEN_LAYER_SPECS,
                  seed=SEED,
                  hinge=HINGE,
+                 m_ratio=M,
                  **kwargs):
         self.recon_coeff = recon_coeff
         self.class_coeff = class_coeff
         self.fair_coeff = fair_coeff
+        self.ind_coeff = ind_coeff # Individual Fairness
         self.xdim = xdim
         self.ydim = ydim
         self.zdim = zdim
@@ -49,6 +54,7 @@ class AbstractBaseNet(ABC):
         self.hidden_layer_specs = hidden_layer_specs
         self.seed = seed
         self.hinge = hinge
+        self.m = m_ratio  # Individual Fairness
         tf.set_random_seed(self.seed)
         self._define_vars()
         self.Z = self._get_latents(self.X)
@@ -60,7 +66,9 @@ class AbstractBaseNet(ABC):
         self.class_loss = self._get_class_loss(self.Y_hat, self.Y)
         self.recon_loss = self._get_recon_loss(self.X_hat, self.X)
         self.aud_loss = self._get_aud_loss(self.A_hat, self.A)
+        self.ind_loss = self._get_ind_loss(self.Z, self.X) # Individual Fairness
         self.loss = self._get_loss()
+        self.full_loss = self._get_full_loss()
         self.class_err = classification_error(self.Y, self.Y_hat)
         self.aud_err = classification_error(self.A, self.A_hat)
 
@@ -99,8 +107,17 @@ class AbstractBaseNet(ABC):
     def _get_aud_loss(self, pred, target, *args):  # produce losses for the fairness task
         pass
 
+    # Individual Fairness
+    @abstractmethod
+    def _get_ind_loss(self, pred, target):
+        pass
+
     @abstractmethod
     def _get_loss(self):  # produce losses for the fairness task
+        pass
+
+    @abstractmethod
+    def _get_full_loss(self):  # produce losses for the fairness task
         pass
 
     @abstractmethod
@@ -163,6 +180,26 @@ class DemParGan(AbstractBaseNet):
     def _get_aud_loss(self, A_hat, A):
         return cross_entropy(A, A_hat)
 
+    def _get_ind_loss(self, Z, X):
+
+        row_norms_X = tf.reduce_sum(tf.square(X), axis=1)
+        row_norms_X = tf.reshape(row_norms_X, [-1, 1])
+        dX = row_norms_X - 2 * tf.matmul(X, tf.transpose(X)) + tf.transpose(row_norms_X)
+
+        row_norms_Z = tf.reduce_sum(tf.square(Z), axis=1)
+        row_norms_Z = tf.reshape(row_norms_Z, [-1, 1])
+        dZ = row_norms_Z - 2 * tf.matmul(Z, tf.transpose(Z)) + tf.transpose(row_norms_Z)
+
+        ones = tf.ones_like(dX)
+        diag_mask = tf.logical_not(tf.cast(tf.matrix_band_part(ones, 0, 0), dtype=tf.bool))
+
+        dX = tf.reshape(tf.boolean_mask(dX, diag_mask), [tf.shape(dX)[0], -1])
+        dZ = tf.reshape(tf.boolean_mask(dZ, diag_mask), [tf.shape(dZ)[0], -1])
+
+        # return tf.reduce_mean(tf.nn.relu(dZ / dX - self.m), axis=1)
+        ratio = tf.where(tf.less(dX, 1e-5), dX, tf.divide(dZ, dX))
+        return tf.reduce_mean(tf.nn.relu(ratio - self.m), axis=1)
+
     def _get_weight_decay(self):
         var_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='model/aud')
         weights_norm = [tf.reduce_sum(tf.square(w)) for w in var_list]
@@ -173,7 +210,15 @@ class DemParGan(AbstractBaseNet):
         return tf.reduce_mean([
             self.class_coeff*self.class_loss,
             self.recon_coeff*self.recon_loss,
-            -self.fair_coeff*self.aud_loss
+            -self.fair_coeff*self.aud_loss,
+            # self.ind_coeff * self.ind_loss
+        ])
+    def _get_full_loss(self):  # produce losses for the fairness task
+        return tf.reduce_mean([
+            self.class_coeff*self.class_loss,
+            self.recon_coeff*self.recon_loss,
+            -self.fair_coeff*self.aud_loss,
+            self.ind_coeff * self.ind_loss
         ])
 
     def _get_class_preds_from_logits(self, logits):
@@ -199,9 +244,14 @@ class EqOddsUnweightedGan(DemParGan):
 class EqoppUnweightedGan(DemParGan):
     """Like DemParGan, but only using Y = 0 examples"""
     def _get_loss(self):  # produce losses for the fairness task
-        loss = self.class_coeff*self.class_loss + self.recon_coeff*self.recon_loss - self.fair_coeff*self.aud_loss
+        loss = self.class_coeff*self.class_loss + self.recon_coeff*self.recon_loss - self.fair_coeff*self.aud_loss + self.ind_coeff*self.ind_loss
         eqopp_class_loss = tf.multiply(1.  - self.Y, loss)
         return tf.reduce_mean(eqopp_class_loss)
+
+    # def _get_full_loss(self):  # produce losses for the fairness task
+    #     loss = self.class_coeff*self.class_loss + self.recon_coeff*self.recon_loss - self.fair_coeff*self.aud_loss + self.ind_coeff*self.ind_loss
+    #     eqopp_class_loss = tf.multiply(1.  - self.Y, loss)
+    #     return tf.reduce_mean(eqopp_class_loss)
 
 
 class WassGan(AbstractBaseNet):
@@ -248,6 +298,7 @@ class WeightedGan(AbstractBaseNet):
                  recon_coeff=RECON_COEFF,
                  class_coeff=CLASS_COEFF,
                  fair_coeff=FAIR_COEFF,
+                 ind_coeff=IND_COEFF,
                  xdim=XDIM,
                  ydim=YDIM,
                  zdim=ZDIM,
@@ -263,10 +314,11 @@ class WeightedGan(AbstractBaseNet):
         self.Y_weights = Y_weights
         self.AY_weights = AY_weights
 
-        super().__init__(recon_coeff, class_coeff, fair_coeff, xdim, ydim, zdim, adim, hidden_layer_specs, seed=seed, hinge=hinge, **kwargs)
+        super().__init__(recon_coeff, class_coeff, fair_coeff, ind_coeff, xdim, ydim, zdim, adim, hidden_layer_specs, seed=seed, hinge=hinge, **kwargs)
         self.unweighted_aud_loss = self._get_aud_loss(self.A_hat, self.A)
         self.aud_loss = self._get_weighted_aud_loss(self.unweighted_aud_loss, self.A_weights, self.Y_weights, self.AY_weights)
         self.loss = self._get_loss()
+        self.full_loss = self._get_full_loss()
 
     @abstractmethod
     def _get_weighted_class_loss(self, L, A_wts, Y_wts, AY_wts): #weight class loss for final loss function
@@ -278,6 +330,11 @@ class WeightedGan(AbstractBaseNet):
 
     @abstractmethod
     def _get_weighted_aud_loss(self, L, A_wts, Y_wts, AY_wts): #weight auditor loss for final loss function
+        pass
+
+    # Individual Fairness
+    @abstractmethod
+    def _get_weighted_ind_loss(self, L, A_wts, Y_wts, AY_wts):
         pass
 
 
@@ -296,6 +353,9 @@ class WeightedDemParGan(WeightedGan, DemParGan):
         return self._weight_loss(L, A_wts, Y_wts, AY_wts)
 
     def _get_weighted_aud_loss(self, L, A_wts, Y_wts, AY_wts):
+        return self._weight_loss(L, A_wts, Y_wts, AY_wts)
+
+    def _get_weighted_ind_loss(self, L, A_wts, Y_wts, AY_wts):
         return self._weight_loss(L, A_wts, Y_wts, AY_wts)
 
 
@@ -349,6 +409,7 @@ class WeightedDemParWassGpGan(WeightedDemParWassGan):
         self.aud_loss = self._get_weighted_aud_loss(self.unweighted_aud_loss, self.A_weights, self.Y_weights, self.AY_weights) + self.gp*self.grad_norms
         self.aud_err = classification_error(self.A, tf.cast(tf.greater(self.A_hat, 0), tf.float32))
         self.loss = self._get_loss()
+        self.full_loss = self._get_full_loss()
 
     def _get_aud_preds_from_logits(self, logits):
         return logits
@@ -371,10 +432,10 @@ class WeightedDemParWassGpGan(WeightedDemParWassGan):
         return scale_factor*tf.losses.mean_squared_error(
                 labels=tf.ones([self.batch_size, ]),
                 predictions=tf.norm(tf.gradients(Ahat_mix, Xmix)[0], axis=1),
-                weights=A_xor_As  # we only care about getting grad norm == 1 where A_i != As_i 
+                weights=A_xor_As  # we only care about getting grad norm == 1 where A_i != As_i
                 )
 
-      
+
 class WeightedDemParWassGpCeGan(WeightedDemParWassGpGan):
     """grad penalty with cross entropy classifier loss"""
     def _get_class_loss(self, Y_hat, Y):
@@ -403,7 +464,7 @@ class WeightedEqoddsWassGpGan(WeightedDemParWassGpGan, WeightedEqoddsWassGan):
         return scale_factor*tf.losses.mean_squared_error(
                 labels=tf.ones([self.batch_size, ]),
                 predictions=tf.norm(tf.gradients(Ahat_mix, Z_and_Y_mix)[0], axis=1),
-                weights=A_xor_As  # we only care about getting grad norm == 1 where A_i != As_i 
+                weights=A_xor_As  # we only care about getting grad norm == 1 where A_i != As_i
                 )
 
     def _get_sensitive_logits(self, latents, scope_name='model/aud', reuse=False):
@@ -411,7 +472,7 @@ class WeightedEqoddsWassGpGan(WeightedDemParWassGpGan, WeightedEqoddsWassGan):
 
     def _get_aud_preds_from_logits(self, logits):
         return WeightedDemParWassGpGan._get_aud_preds_from_logits(self, logits)
- 
+
 class WeightedEqoddsWassGpCeGan(WeightedEqoddsWassGpGan, WeightedDemParWassGpCeGan):
     def _get_class_loss(self, Y_hat, Y):
         return cross_entropy(Y, Y_hat)
@@ -424,7 +485,7 @@ WeightedEqoppWassGan = WeightedEqoddsWassGan
 WeightedEqoppWassGpGan = WeightedEqoddsWassGpGan
 WeightedEqoppWassGpCeGan = WeightedEqoddsWassGpCeGan
 
-     
+
 class RegularizedFairClassifier(DemParGan):
     """
     disparate impact-regularized classifier
@@ -464,7 +525,7 @@ class RegularizedDPClassifier(RegularizedFairClassifier):
             0. * self.aud_loss
         ]) + self.fair_coeff * _get_DP_reg(self.Y, self.Y_hat, self.A)
 
-      
+
 
 # model-specific utils
 def cross_entropy(target, pred, weights=None, eps=EPS):

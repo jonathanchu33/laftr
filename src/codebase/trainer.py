@@ -51,7 +51,7 @@ class Trainer(object):
         # auditor train op
         self.opt_aud = tf.train.AdamOptimizer(learning_rate=learning_rate)
         self.aud_op = self.opt_aud.minimize(
-            -self.model.loss,
+            self.model.aud_loss,
             var_list=tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='model/aud')
         )
 
@@ -95,7 +95,7 @@ class Trainer(object):
         for epoch in range(n_epochs):
             print('starting Epoch {:d}'.format(epoch))
             train_iter = self.data.get_batch_iterator('train', self.batch_size)
-            train_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0.}
+            train_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0., 'ind': 0.}
             self.batches_seen = 0
             trained_class = 0; trained_aud = 0
             Y_hats_tr = np.empty((0, 1))
@@ -113,11 +113,12 @@ class Trainer(object):
                     summary_writer.add_summary(self.sess.run(self.summ_op, feed_dict=feed_dict), epoch)
                 self.batches_seen += 1
                 # train encoder-classifier-decoder
-                _, class_loss, class_err, recon_loss, Y_hat, A_hat = self.sess.run(
+                _, class_loss, class_err, recon_loss, ind_loss, Y_hat, A_hat = self.sess.run(
                     [self.enc_cla_op,
                      self.model.class_loss,
                      self.model.class_err,
                      self.model.recon_loss,
+                     self.model.ind_loss,
                      self.model.Y_hat,
                      self.model.A_hat
                      ],
@@ -126,8 +127,11 @@ class Trainer(object):
                 trained_class_this_epoch = True
                 trained_class += 1
 
+                # print('STUFF', class_loss, class_err, recon_loss, ind_loss, Y_hat, A_hat)
+                # break
+
                 aud_ops_base = [self.model.loss, self.model.aud_loss, self.model.aud_err, \
-                                        self.model.Y_hat, self.model.A_hat]
+                                        self.model.Y_hat, self.model.A_hat] #self.model.loss, self.model.aud_loss, self.model.aud_err, \
 
                 for _ in range(self.aud_steps):
                     if not self.regbas:
@@ -139,6 +143,7 @@ class Trainer(object):
                                 aud_ops,
                                 feed_dict=feed_dict
                                 )
+                        # total_loss, aud_loss, aud_err,
                     else:
                         # train auditor
                         total_loss, aud_loss, aud_err, Y_hat, A_hat = self.sess.run(
@@ -146,6 +151,8 @@ class Trainer(object):
                             feed_dict=feed_dict
                         )
 
+                # print('STUFF', total_loss, aud_loss, aud_err, Y_hat, A_hat)
+                # break
                 Y_hats_tr = np.concatenate((Y_hats_tr, Y_hat))
                 A_hats_tr = np.concatenate((A_hats_tr, A_hat))
 
@@ -155,16 +162,18 @@ class Trainer(object):
                 train_L['class_err'] += class_err
                 train_L['disc_err'] += aud_err
                 train_L['recon'] += np.mean(recon_loss)
+                train_L['ind'] += np.mean(ind_loss)
+            # print('TRHUH?', Y_hats_tr, A_hats_tr)
 
             print('E{:d}: trained class {:d}, trained aud {:d}'.format(epoch, trained_class, trained_aud))
             for k in train_L:
                 train_L[k] /= self.batches_seen
             train_L['ttl'] = train_L['class'] - train_L['disc']
-            train_res_str = 'E{:d}: ClaCE:{:.3f}, DisCE:{:.3f}, TtlCE:{:.3f}, ClaErr:{:.3f}, DisErr:{:.3f}, RecLoss:{:.3f}'.\
-                            format(epoch, train_L['class'], train_L['disc'], train_L['ttl'], train_L['class_err'], train_L['disc_err'], train_L['recon'])
+            train_res_str = 'E{:d}: ClaCE:{:.3f}, DisCE:{:.3f}, TtlCE:{:.3f}, ClaErr:{:.3f}, DisErr:{:.3f}, RecLoss:{:.3f}, IndLoss:{:.3f}'.\
+                            format(epoch, train_L['class'], train_L['disc'], train_L['ttl'], train_L['class_err'], train_L['disc_err'], train_L['recon'], train_L['ind'])
 
             valid_iter = self.data.get_batch_iterator('valid', self.batch_size)
-            valid_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0., 'baseline_aud': 0., 'final_aud': 0.}
+            valid_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0., 'ind': 0., 'baseline_aud': 0., 'final_aud': 0.}
             num_batches = 0
             Y_hats = np.empty((0, 1))
             Ys = np.empty((0, 1))
@@ -177,10 +186,11 @@ class Trainer(object):
                     continue
                 feed_dict = {self.model.X: x, self.model.Y: y, self.model.A: a, self.model.epoch: np.array([epoch])}
                 #  run encoder-classifier-decoder (don't take a train step)
-                class_loss, class_err, recon_loss, Y_hat, A_hat, total_loss, aud_loss, aud_err = self.sess.run(
+                class_loss, class_err, recon_loss, ind_loss, Y_hat, A_hat, total_loss, aud_loss, aud_err = self.sess.run(
                     [self.model.class_loss,
                      self.model.class_err,
                      self.model.recon_loss,
+                     self.model.ind_loss,
                      self.model.Y_hat,
                      self.model.A_hat,
                      self.model.loss,
@@ -195,11 +205,13 @@ class Trainer(object):
                 valid_L['class_err'] += class_err
                 valid_L['disc_err'] += aud_err
                 valid_L['recon'] += np.mean(recon_loss)
+                valid_L['ind'] += np.mean(ind_loss)
 
                 Y_hats = np.concatenate((Y_hats, Y_hat))
                 Ys = np.concatenate((Ys, y))
                 As = np.concatenate((As, a))
                 A_hats = np.concatenate((A_hats, A_hat))
+                # print('HUH???', Y_hats, Ys, As, A_hats)
 
                 if hasattr(self.model, 'baseline_aud_loss'):
                     baseline_aud_loss, final_aud_loss = self.sess.run(
@@ -213,8 +225,8 @@ class Trainer(object):
             for k in valid_L:
                 valid_L[k] /= num_batches
             valid_L['ttl'] = valid_L['class'] - valid_L['disc']
-            valid_res_str = 'E{:d}: ClaCE:{:.3f}, DisCE:{:.3f}, TtlCE:{:.3f}, ClaErr:{:.3f}, DisErr:{:.3f}, RecLoss:{:.3f}'.\
-                format(epoch, valid_L['class'], valid_L['disc'], valid_L['ttl'], valid_L['class_err'], valid_L['disc_err'], valid_L['recon'])
+            valid_res_str = 'E{:d}: ClaCE:{:.3f}, DisCE:{:.3f}, TtlCE:{:.3f}, ClaErr:{:.3f}, DisErr:{:.3f}, RecLoss:{:.3f}, IndLoss:{:.3f}'.\
+                format(epoch, valid_L['class'], valid_L['disc'], valid_L['ttl'], valid_L['class_err'], valid_L['disc_err'], valid_L['recon'], valid_L['ind'])
 
             # Create a new Summary object with your measure
             summary = tf.Summary()

@@ -8,7 +8,7 @@
         "recon_coeff": 0.0,
         "class_coeff": 1.0,
         "fair_coeff": 1.0,
-        "ind_coeff": 0.0,
+        "ind_coeff": 1.0,
         "adim": 1,
         "ydim": 1,
         "hinge": 0.0,

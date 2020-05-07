@@ -18,13 +18,14 @@ class Tester(object):
     def evaluate(self, mb_size, phase='test', save=True):
         # for mb in training data
         test_iter = self.data.get_batch_iterator(phase, mb_size)
-        test_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0}
+        test_L = {'class': 0., 'disc': 0., 'class_err': 0., 'disc_err': 0., 'recon': 0, 'ind': 0}
         num_batches = 0
         Y_hats = np.empty((0, 1))
         A_hats = np.empty((0, 1))
         Zs = np.empty((0, self.model.zdim))
         Ys = np.empty((0, 1))
         As = np.empty((0, 1))
+        Xs = np.empty((0, self.model.xdim))
 
         for x, y, a in test_iter:
             num_batches += 1
@@ -64,12 +65,14 @@ class Tester(object):
             Ys = np.concatenate((Ys, Y))
             A_hats = np.concatenate((A_hats, A_hat))
             As = np.concatenate((As, A))
+            Xs = np.concatenate((Xs, x))
 
         Y_hat = Y_hats
         Y = Ys
         A_hat = A_hats
         A = As
         Z = Zs
+        X = Xs
 
         tensorD = {}
         tensorD['Y_hat'] = Y_hat
@@ -77,6 +80,7 @@ class Tester(object):
         tensorD['Y'] = Y
         tensorD['A_hat'] = A_hat
         tensorD['A'] = A
+        tensorD['X'] = X
 
         for d in tensorD:
             print(tensorD[d].shape)
@@ -100,8 +104,11 @@ class Tester(object):
         err_a = errRate(A, A_hat)
         dp = DP(Y_hat, A)
 
+        avg_r = avg_ratio(X, Z)
+        max_r = max_ratio(X, Z)
+
         metrics_str = 'Error Rate: {:.3f},  DI: {:.3f}, di_FP: {:.3f}, di_FN: {:.3f}'.format(err, di, difp, difn) \
-                    + '\nError Rate (A): {:.3f}'.format(err_a)
+                    + '\nError Rate (A): {:.3f}, Avg Ratio: {:.3f}, Max Ratio: {:.3f}'.format(err_a, avg_r, max_r)
         print(metrics_str)
 
         metD['ErrY'] = err
@@ -112,6 +119,9 @@ class Tester(object):
         metD['DP'] = dp
         metD['Recon'] = test_L['recon']
         errMaskA = np.abs(A - A_hat)
+
+        metD['AvgR'] = avg_r
+        metD['MaxR'] = max_r
 
         print('\nPredicting Y')
         for mask, mask_nm in [(np.ones_like(A), 'A=?'), (A, 'A=1'), (1 - A, 'A=0'), (1 - errMaskA, 'ACor'), (errMaskA, 'AWro')]:

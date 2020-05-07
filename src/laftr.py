@@ -31,7 +31,6 @@ def main(args):
     if args['data']['use_attr']:
         args['model'].update(xdim=args['model']['xdim']+1)
 
-
     #get dataset
     data = Dataset(npzfile=npzfile, **args['data'], batch_size=args['train']['batch_size'])
 
@@ -46,6 +45,7 @@ def main(args):
             AY_weights[1][1] = 0. #AY_weights[1][1]
         args['model'].update(A_weights=A_weights, Y_weights=Y_weights, AY_weights=AY_weights)
     model_class = getattr(models, args['model'].pop('class'))
+    print(args['model'])
     model = model_class(**args['model'], batch_size=args['train']['batch_size'])
 
     with tf.Session() as sess:
@@ -74,14 +74,14 @@ if __name__ == '__main__':
     """
     This script trains a LAFTR model. For the full evaluation used in the paper (first train LAFTR then evaluate on naive classifier) see `src/run_laftr.py`.
 
-    Instructions: 
+    Instructions:
     1) Run from repo root
     2) First arg is base config file
-    3) Optionally override individual params with -o then comma-separated (no spaces) list of args, e.g., -o exp_name=foo,data.seed=0,model.fair_coeff=2.0 
+    3) Optionally override individual params with -o then comma-separated (no spaces) list of args, e.g., -o exp_name=foo,data.seed=0,model.fair_coeff=2.0
        (the overrides must come before the named templates in steps 4--5)
-    4) Set templates by name, e.g., --data adult 
+    4) Set templates by name, e.g., --data adult
     5) Required templates are --data and --dirs
-    
+
     e.g.,
     >>> python src/laftr.py conf/laftr/config.json -o train.n_epochs=10,model.fair_coeff=2. --data adult --dirs local
 
