@@ -104,11 +104,27 @@ class Tester(object):
         err_a = errRate(A, A_hat)
         dp = DP(Y_hat, A)
 
+        # IF metrics
         avg_r = avg_ratio(X, Z)
         max_r = max_ratio(X, Z)
+        ifp16 = percent_same(Z, Y, 16)
+        ifp8 = percent_same(Z, Y, 8)
+        ifp4 = percent_same(Z, Y, 4)
+        ifp2 = percent_same(Z, Y, 2)
+        ifp1 = percent_same(Z, Y)
+        ifp_5 = percent_same(Z, Y, .5)
+        ifp_25 = percent_same(Z, Y, .25)
+        ifp_1 = percent_same(Z, Y, .1)
+        ifp_05 = percent_same(Z, Y, .05)
+        ifp_025 = percent_same(Z, Y, .025)
+        ifp_01 = percent_same(Z, Y, .01)
 
         metrics_str = 'Error Rate: {:.3f},  DI: {:.3f}, di_FP: {:.3f}, di_FN: {:.3f}'.format(err, di, difp, difn) \
-                    + '\nError Rate (A): {:.3f}, Avg Ratio: {:.3f}, Max Ratio: {:.3f}'.format(err_a, avg_r, max_r)
+                    + '\nError Rate (A): {:.3f}'.format(err_a) \
+                    + '\nAvg Ratio: {:.3f}, Max Ratio: {:.3f}'.format(avg_r, max_r) \
+                    + '\nIF Percent with... T16: {:.3f}, T8: {:.3f}, T4: {:.3f}'.format(ifp16, ifp8, ifp4) \
+                    + '\nT2: {:.3f}, T1: {:.3f}, T.5: {:.3f}, T.25: {:.3f}'.format(ifp2, ifp1, ifp_5, ifp_25) \
+                    + '\nT.1: {:.3f}, T.05: {:.3f}, T.025: {:.3f}, T.01: {:.3f}'.format(ifp_1, ifp_05, ifp_025, ifp_01)
         print(metrics_str)
 
         metD['ErrY'] = err
@@ -122,6 +138,17 @@ class Tester(object):
 
         metD['AvgR'] = avg_r
         metD['MaxR'] = max_r
+        metD['IFP16'] = ifp16
+        metD['IFP8'] = ifp8
+        metD['IFP4'] = ifp4
+        metD['IFP2'] = ifp2
+        metD['IFP1'] = ifp1
+        metD['IFP_5'] = ifp_5
+        metD['IFP_25'] = ifp_25
+        metD['IFP_1'] = ifp_1
+        metD['IFP_05'] = ifp_05
+        metD['IFP_025'] = ifp_025
+        metD['IFP_01'] = ifp_01
 
         print('\nPredicting Y')
         for mask, mask_nm in [(np.ones_like(A), 'A=?'), (A, 'A=1'), (1 - A, 'A=0'), (1 - errMaskA, 'ACor'), (errMaskA, 'AWro')]:

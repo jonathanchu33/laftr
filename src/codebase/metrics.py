@@ -128,6 +128,19 @@ def max_ratio(X, Z):
 def avg_ratio(X, Z):
     return np.mean(compute_distances(X, Z))
 
+def percent_same(Z, Y, threshold = 1):
+    row_norms_Z = np.sum(np.square(Z), axis=1)
+    row_norms_Z.reshape(-1, 1)
+    dZ = row_norms_Z - 2 * np.matmul(Z, np.transpose(Z)) + np.transpose(row_norms_Z)
+    within_bound = dZ < threshold
+
+    columnY = np.repeat(Y, Y.shape[0], axis=1)
+    rowY = np.repeat(Y.transpose(), Y.shape[0], axis=0)
+    agree_mask = np.logical_not(np.logical_xor(columnY, rowY))
+
+    return np.sum(np.logical_and(within_bound, agree_mask)) / np.sum(within_bound)
+
+
 if __name__ == '__main__':
     Y = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
     Ypred = np.array([0.9, 0.8, 0.7, 0.3, 0.2, 0.1, 0.2, 0.3, 0.8, 0.9])
