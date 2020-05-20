@@ -1,0 +1,645 @@
+WeightedDemParWassGan
+
+starting Epoch 0
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E0: trained class 377, trained aud 377
+DI:  0.10683359205722809
+DP:  0.114679165
+(6016, 1)
+(6016, 8)
+(6016, 1)
+(6016, 1)
+(6016, 1)
+(6016, 113)
+Test score: Class CE: 0.201, Disc CE: 0.986, Ttl CE: -0.785, Class Err: 0.184 Disc Err: 0.671
+Error Rate: 0.184,  DI: 0.053, di_FP: 0.033, di_FN: 0.074
+Error Rate (A): 0.671
+Avg Ratio: 0.196, Max Ratio: 3926.489
+IF Percent with... T16: 0.637, T8: 0.648, T4: 0.666
+T2: 0.681, T1: 0.691, T.5: 0.696, T.25: 0.699
+T.1: 0.700, T.05: 0.701, T.025: 0.701, T.01: 0.701
+
+Predicting Y
+A=?: Base PR: 0.251, Base NR: 0.749,  PR: 0.149, NR: 0.851, Err: 0.184, TPR: 0.430, FNR: 0.570, TNR: 0.945, FPR: 0.055
+A=1: Base PR: 0.113, Base NR: 0.887,  PR: 0.072, NR: 0.928, Err: 0.102, TPR: 0.368, FNR: 0.632, TNR: 0.965, FPR: 0.035
+A=0: Base PR: 0.318, Base NR: 0.682,  PR: 0.187, NR: 0.813, Err: 0.224, TPR: 0.441, FNR: 0.559, TNR: 0.932, FPR: 0.068
+ACor: Base PR: 0.113, Base NR: 0.887,  PR: 0.072, NR: 0.928, Err: 0.102, TPR: 0.368, FNR: 0.632, TNR: 0.966, FPR: 0.034
+AWro: Base PR: 0.318, Base NR: 0.682,  PR: 0.187, NR: 0.813, Err: 0.224, TPR: 0.441, FNR: 0.559, TNR: 0.932, FPR: 0.068
+
+Predicting A
+Y=?: Base-A1-rate: 0.329, Base-A0-rate: 0.671, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.671, A1-Correct: 0.999, A1-Wrong: 0.001, A0-Correct: 0.000, A0-Wrong: 1.000
+Y=1: Base-A1-rate: 0.148, Base-A0-rate: 0.852, Pred A1-rate: 0.999, Pred-A0-rate: 0.001, Err: 0.852, A1-Correct: 0.996, A1-Wrong: 0.004, A0-Correct: 0.001, A0-Wrong: 0.999
+Y=0: Base-A1-rate: 0.390, Base-A0-rate: 0.610, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.610, A1-Correct: 0.999, A1-Wrong: 0.001, A0-Correct: 0.000, A0-Wrong: 1.000
+YCor: Base-A1-rate: 0.362, Base-A0-rate: 0.638, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.638, A1-Correct: 0.999, A1-Wrong: 0.001, A0-Correct: 0.000, A0-Wrong: 1.000
+YWro: Base-A1-rate: 0.182, Base-A0-rate: 0.818, Pred A1-rate: 0.999, Pred-A0-rate: 0.001, Err: 0.818, A1-Correct: 0.995, A1-Wrong: 0.005, A0-Correct: 0.000, A0-Wrong: 1.000
+Metrics saved to ./experiments/laftr_ind_new/checkpoints/Epoch_0_Valid/test_metrics.csv
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.199, Disc CE: 0.990, Ttl CE: -0.791, Class Err: 0.182 Disc Err: 0.674
+Error Rate: 0.182,  DI: 0.053, di_FP: 0.041, di_FN: 0.065
+Error Rate (A): 0.674
+Avg Ratio: 0.193, Max Ratio: 1761.389
+IF Percent with... T16: 0.641, T8: 0.653, T4: 0.670
+T2: 0.685, T1: 0.694, T.5: 0.699, T.25: 0.702
+T.1: 0.704, T.05: 0.704, T.025: 0.705, T.01: 0.705
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.142, NR: 0.858, Err: 0.182, TPR: 0.418, FNR: 0.582, TNR: 0.948, FPR: 0.052
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.065, NR: 0.935, Err: 0.096, TPR: 0.363, FNR: 0.637, TNR: 0.973, FPR: 0.027
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.180, NR: 0.820, Err: 0.224, TPR: 0.428, FNR: 0.572, TNR: 0.932, FPR: 0.068
+ACor: Base PR: 0.113, Base NR: 0.887,  PR: 0.064, NR: 0.936, Err: 0.096, TPR: 0.359, FNR: 0.641, TNR: 0.973, FPR: 0.027
+AWro: Base PR: 0.310, Base NR: 0.690,  PR: 0.180, NR: 0.820, Err: 0.224, TPR: 0.429, FNR: 0.571, TNR: 0.932, FPR: 0.068
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.999, Pred-A0-rate: 0.001, Err: 0.674, A1-Correct: 0.998, A1-Wrong: 0.002, A0-Correct: 0.000, A0-Wrong: 1.000
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.999, Pred-A0-rate: 0.001, Err: 0.850, A1-Correct: 0.995, A1-Wrong: 0.005, A0-Correct: 0.000, A0-Wrong: 1.000
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.999, Pred-A0-rate: 0.001, Err: 0.617, A1-Correct: 0.999, A1-Wrong: 0.001, A0-Correct: 0.000, A0-Wrong: 1.000
+YCor: Base-A1-rate: 0.361, Base-A0-rate: 0.639, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.640, A1-Correct: 0.999, A1-Wrong: 0.001, A0-Correct: 0.000, A0-Wrong: 1.000
+YWro: Base-A1-rate: 0.172, Base-A0-rate: 0.828, Pred A1-rate: 0.998, Pred-A0-rate: 0.002, Err: 0.828, A1-Correct: 0.996, A1-Wrong: 0.004, A0-Correct: 0.002, A0-Wrong: 0.998
+Metrics saved to ./experiments/laftr_ind_new/checkpoints/Epoch_0_Test/test_metrics.csv
+E0: ClaCE:0.255, DisCE:1.020, TtlCE:-0.765, ClaErr:0.226, DisErr:0.680, RecLoss:1.123, IndLoss:0.000; E0: ClaCE:0.201, DisCE:0.986, TtlCE:-0.785, ClaErr:0.184, DisErr:0.671, RecLoss:1.145, IndLoss:0.000
+starting Epoch 1
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E1: trained class 377, trained aud 377
+DI:  0.14076051115989685
+DP:  0.11491373
+E1: ClaCE:0.187, DisCE:1.013, TtlCE:-0.826, ClaErr:0.176, DisErr:0.677, RecLoss:1.167, IndLoss:0.001; E1: ClaCE:0.180, DisCE:1.027, TtlCE:-0.847, ClaErr:0.170, DisErr:0.671, RecLoss:1.169, IndLoss:0.005
+starting Epoch 2
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E2: trained class 377, trained aud 377
+DI:  0.18177703022956848
+DP:  0.0770607
+E2: ClaCE:0.176, DisCE:1.022, TtlCE:-0.846, ClaErr:0.169, DisErr:0.677, RecLoss:1.177, IndLoss:0.006; E2: ClaCE:0.175, DisCE:1.006, TtlCE:-0.831, ClaErr:0.171, DisErr:0.671, RecLoss:1.160, IndLoss:0.007
+starting Epoch 3
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E3: trained class 377, trained aud 377
+DI:  0.27834007143974304
+DP:  0.041357204
+E3: ClaCE:0.178, DisCE:1.021, TtlCE:-0.844, ClaErr:0.172, DisErr:0.676, RecLoss:1.179, IndLoss:0.006; E3: ClaCE:0.181, DisCE:1.010, TtlCE:-0.830, ClaErr:0.175, DisErr:0.671, RecLoss:1.184, IndLoss:0.008
+starting Epoch 4
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E4: trained class 377, trained aud 377
+DI:  0.2114395797252655
+DP:  0.06620428
+E4: ClaCE:0.174, DisCE:1.017, TtlCE:-0.843, ClaErr:0.169, DisErr:0.677, RecLoss:1.206, IndLoss:0.010; E4: ClaCE:0.177, DisCE:1.003, TtlCE:-0.826, ClaErr:0.173, DisErr:0.671, RecLoss:1.212, IndLoss:0.014
+starting Epoch 5
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E5: trained class 377, trained aud 377
+DI:  0.22207659482955933
+DP:  0.07296878
+E5: ClaCE:0.169, DisCE:1.008, TtlCE:-0.839, ClaErr:0.166, DisErr:0.677, RecLoss:1.224, IndLoss:0.017; E5: ClaCE:0.175, DisCE:0.997, TtlCE:-0.822, ClaErr:0.173, DisErr:0.671, RecLoss:1.218, IndLoss:0.020
+starting Epoch 6
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E6: trained class 377, trained aud 377
+DI:  0.21398389339447021
+DP:  0.073253155
+E6: ClaCE:0.166, DisCE:1.004, TtlCE:-0.838, ClaErr:0.164, DisErr:0.677, RecLoss:1.227, IndLoss:0.021; E6: ClaCE:0.174, DisCE:0.991, TtlCE:-0.817, ClaErr:0.172, DisErr:0.671, RecLoss:1.219, IndLoss:0.023
+starting Epoch 7
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E7: trained class 377, trained aud 377
+DI:  0.22043907642364502
+DP:  0.07221492
+E7: ClaCE:0.167, DisCE:1.001, TtlCE:-0.834, ClaErr:0.164, DisErr:0.677, RecLoss:1.213, IndLoss:0.023; E7: ClaCE:0.172, DisCE:0.990, TtlCE:-0.819, ClaErr:0.171, DisErr:0.671, RecLoss:1.209, IndLoss:0.028
+starting Epoch 8
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E8: trained class 377, trained aud 377
+DI:  0.21855111420154572
+DP:  0.07556458
+E8: ClaCE:0.161, DisCE:0.998, TtlCE:-0.838, ClaErr:0.159, DisErr:0.677, RecLoss:1.215, IndLoss:0.026; E8: ClaCE:0.169, DisCE:0.988, TtlCE:-0.820, ClaErr:0.169, DisErr:0.671, RecLoss:1.202, IndLoss:0.027
+starting Epoch 9
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E9: trained class 377, trained aud 377
+DI:  0.20687182247638702
+DP:  0.07778719
+E9: ClaCE:0.158, DisCE:0.996, TtlCE:-0.838, ClaErr:0.156, DisErr:0.676, RecLoss:1.210, IndLoss:0.024; E9: ClaCE:0.171, DisCE:0.989, TtlCE:-0.818, ClaErr:0.171, DisErr:0.668, RecLoss:1.212, IndLoss:0.027
+Finished training: min validation loss was -0.847 in epoch 1
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.168, Disc CE: 0.994, Ttl CE: -0.826, Class Err: 0.167 Disc Err: 0.670
+Error Rate: 0.167,  DI: 0.066, di_FP: 0.002, di_FN: 0.131
+Error Rate (A): 0.670
+Avg Ratio: 0.420, Max Ratio: 9523.564
+IF Percent with... T16: 0.678, T8: 0.704, T4: 0.725
+T2: 0.737, T1: 0.743, T.5: 0.746, T.25: 0.747
+T.1: 0.748, T.05: 0.749, T.025: 0.749, T.01: 0.749
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.198, NR: 0.802, Err: 0.167, TPR: 0.564, FNR: 0.436, TNR: 0.921, FPR: 0.079
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.146, NR: 0.854, Err: 0.106, TPR: 0.675, FNR: 0.325, TNR: 0.922, FPR: 0.078
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.224, NR: 0.776, Err: 0.196, TPR: 0.544, FNR: 0.456, TNR: 0.920, FPR: 0.080
+ACor: Base PR: 0.123, Base NR: 0.877,  PR: 0.155, NR: 0.845, Err: 0.105, TPR: 0.704, FNR: 0.296, TNR: 0.922, FPR: 0.078
+AWro: Base PR: 0.306, Base NR: 0.694,  PR: 0.220, NR: 0.780, Err: 0.197, TPR: 0.536, FNR: 0.464, TNR: 0.920, FPR: 0.080
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.995, Pred-A0-rate: 0.005, Err: 0.670, A1-Correct: 0.998, A1-Wrong: 0.002, A0-Correct: 0.006, A0-Wrong: 0.994
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.981, Pred-A0-rate: 0.019, Err: 0.835, A1-Correct: 0.986, A1-Wrong: 0.014, A0-Correct: 0.020, A0-Wrong: 0.980
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.616, A1-Correct: 1.000, A1-Wrong: 0.000, A0-Correct: 0.000, A0-Wrong: 1.000
+YCor: Base-A1-rate: 0.350, Base-A0-rate: 0.650, Pred A1-rate: 0.994, Pred-A0-rate: 0.006, Err: 0.646, A1-Correct: 0.998, A1-Wrong: 0.002, A0-Correct: 0.008, A0-Wrong: 0.992
+YWro: Base-A1-rate: 0.208, Base-A0-rate: 0.792, Pred A1-rate: 1.000, Pred-A0-rate: 0.000, Err: 0.792, A1-Correct: 1.000, A1-Wrong: 0.000, A0-Correct: 0.000, A0-Wrong: 1.000
+Metrics saved to ./experiments/laftr_ind_new/test_metrics.csv
+
+
+
+
+
+
+
+DemParWassGan
+
+time python src/run_laftr.py conf/transfer/laftr_ind.json -o exp_name="laftr_ind_dpwassgan",train.n_epochs=10,model.class="DemParWassGan" --data adult --dirs local
+{'exp_name': 'laftr_ind_dpwassgan', 'train': {'n_epochs': '10'}, 'model': {'class': 'DemParWassGan'}}
+opt_filename ./experiments/laftr_ind_dpwassgan/opt.json
+done_filename_txt ./experiments/laftr_ind_dpwassgan/done.txt
+done_filename_json ./experiments/laftr_ind_dpwassgan/done.json
+learning reps from scratch
+y shape (30162, 2)
+changing shape
+{'xdim': 113, 'zdim': 8, 'hidden_layer_specs': {'enc': [8], 'cla': [8], 'rec': [8], 'aud': [8]}, 'seed': 0, 'recon_coeff': 0.0, 'class_coeff': 1.0, 'fair_coeff': 1.0, 'ind_coeff': 1.0, 'adim': 1, 'ydim': 1, 'hinge': 0.0, 'gp': 10.0}
+2020-05-06 23:13:42.486860: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+starting Epoch 0
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E0: trained class 377, trained aud 377
+DI:  0.7624900341033936
+DP:  0.33156323
+(6016, 1)
+(6016, 8)
+(6016, 1)
+(6016, 1)
+(6016, 1)
+(6016, 113)
+Test score: Class CE: 0.197, Disc CE: 0.676, Ttl CE: -0.479, Class Err: 0.185 Disc Err: 0.766
+Error Rate: 0.185,  DI: 0.381, di_FP: 0.183, di_FN: 0.580
+Error Rate (A): 0.766
+Avg Ratio: 0.327, Max Ratio: 4295.746
+IF Percent with... T16: 0.669, T8: 0.702, T4: 0.731
+T2: 0.755, T1: 0.770, T.5: 0.778, T.25: 0.782
+T.1: 0.784, T.05: 0.785, T.025: 0.786, T.01: 0.786
+
+Predicting Y
+A=?: Base PR: 0.251, Base NR: 0.749,  PR: 0.238, NR: 0.762, Err: 0.185, TPR: 0.606, FNR: 0.394, TNR: 0.885, FPR: 0.115
+A=1: Base PR: 0.113, Base NR: 0.887,  PR: 0.016, NR: 0.984, Err: 0.103, TPR: 0.112, FNR: 0.888, TNR: 0.997, FPR: 0.003
+A=0: Base PR: 0.318, Base NR: 0.682,  PR: 0.347, NR: 0.653, Err: 0.225, TPR: 0.692, FNR: 0.308, TNR: 0.814, FPR: 0.186
+ACor: Base PR: 0.115, Base NR: 0.885,  PR: 0.043, NR: 0.957, Err: 0.099, TPR: 0.253, FNR: 0.747, TNR: 0.985, FPR: 0.015
+AWro: Base PR: 0.292, Base NR: 0.708,  PR: 0.298, NR: 0.702, Err: 0.211, TPR: 0.649, FNR: 0.351, TNR: 0.847, FPR: 0.153
+
+Predicting A
+Y=?: Base-A1-rate: 0.329, Base-A0-rate: 0.671, Pred A1-rate: 0.464, Pred-A0-rate: 0.536, Err: 0.766, A1-Correct: 0.042, A1-Wrong: 0.958, A0-Correct: 0.329, A0-Wrong: 0.671
+Y=1: Base-A1-rate: 0.148, Base-A0-rate: 0.852, Pred A1-rate: 0.783, Pred-A0-rate: 0.217, Err: 0.893, A1-Correct: 0.130, A1-Wrong: 0.870, A0-Correct: 0.104, A0-Wrong: 0.896
+Y=0: Base-A1-rate: 0.390, Base-A0-rate: 0.610, Pred A1-rate: 0.358, Pred-A0-rate: 0.642, Err: 0.723, A1-Correct: 0.031, A1-Wrong: 0.969, A0-Correct: 0.434, A0-Wrong: 0.566
+YCor: Base-A1-rate: 0.362, Base-A0-rate: 0.638, Pred A1-rate: 0.406, Pred-A0-rate: 0.594, Err: 0.741, A1-Correct: 0.038, A1-Wrong: 0.962, A0-Correct: 0.384, A0-Wrong: 0.616
+YWro: Base-A1-rate: 0.183, Base-A0-rate: 0.817, Pred A1-rate: 0.719, Pred-A0-rate: 0.281, Err: 0.874, A1-Correct: 0.078, A1-Wrong: 0.922, A0-Correct: 0.137, A0-Wrong: 0.863
+Metrics saved to ./experiments/laftr_ind_dpwassgan/checkpoints/Epoch_0_Valid/test_metrics.csv
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.197, Disc CE: 0.677, Ttl CE: -0.479, Class Err: 0.183 Disc Err: 0.766
+Error Rate: 0.183,  DI: 0.398, di_FP: 0.178, di_FN: 0.618
+Error Rate (A): 0.766
+Avg Ratio: 0.317, Max Ratio: 9870.630
+IF Percent with... T16: 0.672, T8: 0.705, T4: 0.734
+T2: 0.757, T1: 0.771, T.5: 0.779, T.25: 0.783
+T.1: 0.785, T.05: 0.786, T.025: 0.786, T.01: 0.787
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.232, NR: 0.768, Err: 0.183, TPR: 0.598, FNR: 0.402, TNR: 0.888, FPR: 0.112
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.010, NR: 0.990, Err: 0.107, TPR: 0.074, FNR: 0.926, TNR: 0.998, FPR: 0.002
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.339, NR: 0.661, Err: 0.220, TPR: 0.691, FNR: 0.309, TNR: 0.820, FPR: 0.180
+ACor: Base PR: 0.101, Base NR: 0.899,  PR: 0.040, NR: 0.960, Err: 0.097, TPR: 0.218, FNR: 0.782, TNR: 0.980, FPR: 0.020
+AWro: Base PR: 0.290, Base NR: 0.710,  PR: 0.290, NR: 0.710, Err: 0.209, TPR: 0.639, FNR: 0.361, TNR: 0.852, FPR: 0.148
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.460, Pred-A0-rate: 0.540, Err: 0.766, A1-Correct: 0.032, A1-Wrong: 0.968, A0-Correct: 0.332, A0-Wrong: 0.668
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.777, Pred-A0-rate: 0.223, Err: 0.903, A1-Correct: 0.081, A1-Wrong: 0.919, A0-Correct: 0.099, A0-Wrong: 0.901
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.357, Pred-A0-rate: 0.643, Err: 0.721, A1-Correct: 0.026, A1-Wrong: 0.974, A0-Correct: 0.437, A0-Wrong: 0.563
+YCor: Base-A1-rate: 0.357, Base-A0-rate: 0.643, Pred A1-rate: 0.406, Pred-A0-rate: 0.594, Err: 0.741, A1-Correct: 0.030, A1-Wrong: 0.970, A0-Correct: 0.386, A0-Wrong: 0.614
+YWro: Base-A1-rate: 0.191, Base-A0-rate: 0.809, Pred A1-rate: 0.702, Pred-A0-rate: 0.298, Err: 0.875, A1-Correct: 0.046, A1-Wrong: 0.954, A0-Correct: 0.143, A0-Wrong: 0.857
+Metrics saved to ./experiments/laftr_ind_dpwassgan/checkpoints/Epoch_0_Test/test_metrics.csv
+E0: ClaCE:0.251, DisCE:0.621, TtlCE:-0.370, ClaErr:0.212, DisErr:0.727, RecLoss:1.149, IndLoss:0.003; E0: ClaCE:0.197, DisCE:0.676, TtlCE:-0.479, ClaErr:0.185, DisErr:0.766, RecLoss:1.179, IndLoss:0.011
+starting Epoch 1
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E1: trained class 377, trained aud 377
+DI:  0.5457149147987366
+DP:  0.239169
+E1: ClaCE:0.188, DisCE:0.445, TtlCE:-0.257, ClaErr:0.180, DisErr:0.432, RecLoss:1.193, IndLoss:0.029; E1: ClaCE:0.177, DisCE:0.305, TtlCE:-0.127, ClaErr:0.171, DisErr:0.270, RecLoss:1.098, IndLoss:0.003
+starting Epoch 2
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E2: trained class 377, trained aud 377
+DI:  0.3446975648403168
+DP:  0.22800082
+E2: ClaCE:0.170, DisCE:0.392, TtlCE:-0.222, ClaErr:0.166, DisErr:0.363, RecLoss:1.147, IndLoss:0.009; E2: ClaCE:0.166, DisCE:0.337, TtlCE:-0.171, ClaErr:0.163, DisErr:0.332, RecLoss:1.206, IndLoss:0.018
+starting Epoch 3
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E3: trained class 377, trained aud 377
+DI:  0.31195253133773804
+DP:  0.216491
+E3: ClaCE:0.161, DisCE:0.327, TtlCE:-0.166, ClaErr:0.159, DisErr:0.324, RecLoss:1.226, IndLoss:0.017; E3: ClaCE:0.160, DisCE:0.334, TtlCE:-0.174, ClaErr:0.159, DisErr:0.329, RecLoss:1.230, IndLoss:0.022
+starting Epoch 4
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E4: trained class 377, trained aud 377
+DI:  0.26892057061195374
+DP:  0.21069953
+E4: ClaCE:0.156, DisCE:0.332, TtlCE:-0.177, ClaErr:0.153, DisErr:0.323, RecLoss:1.254, IndLoss:0.029; E4: ClaCE:0.156, DisCE:0.338, TtlCE:-0.182, ClaErr:0.154, DisErr:0.329, RecLoss:1.263, IndLoss:0.049
+starting Epoch 5
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E5: trained class 377, trained aud 377
+DI:  0.26282328367233276
+DP:  0.20921254
+E5: ClaCE:0.152, DisCE:0.328, TtlCE:-0.176, ClaErr:0.150, DisErr:0.323, RecLoss:1.275, IndLoss:0.056; E5: ClaCE:0.155, DisCE:0.332, TtlCE:-0.177, ClaErr:0.153, DisErr:0.329, RecLoss:1.274, IndLoss:0.070
+starting Epoch 6
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E6: trained class 377, trained aud 377
+DI:  0.2542218565940857
+DP:  0.21192956
+E6: ClaCE:0.149, DisCE:0.325, TtlCE:-0.176, ClaErr:0.148, DisErr:0.323, RecLoss:1.289, IndLoss:0.076; E6: ClaCE:0.154, DisCE:0.331, TtlCE:-0.177, ClaErr:0.152, DisErr:0.329, RecLoss:1.294, IndLoss:0.092
+starting Epoch 7
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E7: trained class 377, trained aud 377
+DI:  0.2612222135066986
+DP:  0.21068129
+E7: ClaCE:0.147, DisCE:0.324, TtlCE:-0.177, ClaErr:0.146, DisErr:0.323, RecLoss:1.305, IndLoss:0.094; E7: ClaCE:0.153, DisCE:0.330, TtlCE:-0.178, ClaErr:0.151, DisErr:0.329, RecLoss:1.310, IndLoss:0.110
+starting Epoch 8
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E8: trained class 377, trained aud 377
+DI:  0.2426476925611496
+DP:  0.20521986
+E8: ClaCE:0.146, DisCE:0.324, TtlCE:-0.178, ClaErr:0.144, DisErr:0.323, RecLoss:1.322, IndLoss:0.113; E8: ClaCE:0.151, DisCE:0.330, TtlCE:-0.178, ClaErr:0.150, DisErr:0.329, RecLoss:1.325, IndLoss:0.126
+starting Epoch 9
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E9: trained class 377, trained aud 377
+DI:  0.22539648413658142
+DP:  0.1977575
+E9: ClaCE:0.145, DisCE:0.324, TtlCE:-0.179, ClaErr:0.143, DisErr:0.323, RecLoss:1.337, IndLoss:0.130; E9: ClaCE:0.151, DisCE:0.330, TtlCE:-0.179, ClaErr:0.148, DisErr:0.329, RecLoss:1.339, IndLoss:0.143
+Finished training: min validation loss was -0.479 in epoch 0
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.153, Disc CE: 0.327, Ttl CE: -0.174, Class Err: 0.153 Disc Err: 0.326
+Error Rate: 0.153,  DI: 0.127, di_FP: 0.080, di_FN: 0.174
+Error Rate (A): 0.326
+Avg Ratio: 0.650, Max Ratio: 23923.812
+IF Percent with... T16: 0.731, T8: 0.757, T4: 0.774
+T2: 0.783, T1: 0.788, T.5: 0.791, T.25: 0.792
+T.1: 0.793, T.05: 0.793, T.025: 0.793, T.01: 0.793
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.196, NR: 0.804, Err: 0.153, TPR: 0.587, FNR: 0.413, TNR: 0.932, FPR: 0.068
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.066, NR: 0.934, Err: 0.080, TPR: 0.440, FNR: 0.560, TNR: 0.982, FPR: 0.018
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.258, NR: 0.742, Err: 0.188, TPR: 0.613, FNR: 0.387, TNR: 0.901, FPR: 0.099
+ACor: Base PR: 0.310, Base NR: 0.690,  PR: 0.258, NR: 0.742, Err: 0.188, TPR: 0.613, FNR: 0.387, TNR: 0.901, FPR: 0.099
+AWro: Base PR: 0.114, Base NR: 0.886,  PR: 0.066, NR: 0.934, Err: 0.080, TPR: 0.440, FNR: 0.560, TNR: 0.982, FPR: 0.018
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.326, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.151, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.384, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+YCor: Base-A1-rate: 0.354, Base-A0-rate: 0.646, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.354, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+YWro: Base-A1-rate: 0.171, Base-A0-rate: 0.829, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.171, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+Metrics saved to ./experiments/laftr_ind_dpwassgan/test_metrics.csv
+
+
+
+
+
+
+DemParGan
+
+time python src/run_laftr.py conf/transfer/laftr_ind.json -o exp_name="laftr_ind_dpgan",train.n_epochs=10,model.class="DemParGan" --data adult --dirs local
+{'exp_name': 'laftr_ind_dpgan', 'train': {'n_epochs': '10'}, 'model': {'class': 'DemParGan'}}
+opt_filename ./experiments/laftr_ind_dpgan/opt.json
+done_filename_txt ./experiments/laftr_ind_dpgan/done.txt
+done_filename_json ./experiments/laftr_ind_dpgan/done.json
+learning reps from scratch
+y shape (30162, 2)
+changing shape
+{'xdim': 113, 'zdim': 8, 'hidden_layer_specs': {'enc': [8], 'cla': [8], 'rec': [8], 'aud': [8]}, 'seed': 0, 'recon_coeff': 0.0, 'class_coeff': 1.0, 'fair_coeff': 1.0, 'ind_coeff': 1.0, 'adim': 1, 'ydim': 1, 'hinge': 0.0, 'gp': 10.0}
+2020-05-06 23:25:55.609170: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+starting Epoch 0
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E0: trained class 377, trained aud 377
+DI:  0.5920752882957458
+DP:  0.31023398
+(6016, 1)
+(6016, 8)
+(6016, 1)
+(6016, 1)
+(6016, 1)
+(6016, 113)
+Test score: Class CE: 0.374, Disc CE: 0.889, Ttl CE: -0.515, Class Err: 0.179 Disc Err: 0.671
+Error Rate: 0.179,  DI: 0.296, di_FP: 0.177, di_FN: 0.415
+Error Rate (A): 0.671
+Avg Ratio: 0.459, Max Ratio: 4694.492
+IF Percent with... T16: 0.652, T8: 0.679, T4: 0.707
+T2: 0.727, T1: 0.740, T.5: 0.747, T.25: 0.751
+T.1: 0.753, T.05: 0.754, T.025: 0.755, T.01: 0.755
+
+Predicting Y
+A=?: Base PR: 0.251, Base NR: 0.749,  PR: 0.252, NR: 0.748, Err: 0.179, TPR: 0.645, FNR: 0.355, TNR: 0.880, FPR: 0.120
+A=1: Base PR: 0.113, Base NR: 0.887,  PR: 0.044, NR: 0.956, Err: 0.091, TPR: 0.291, FNR: 0.709, TNR: 0.987, FPR: 0.013
+A=0: Base PR: 0.318, Base NR: 0.682,  PR: 0.354, NR: 0.646, Err: 0.223, TPR: 0.707, FNR: 0.293, TNR: 0.811, FPR: 0.189
+ACor: Base PR: 0.112, Base NR: 0.888,  PR: 0.044, NR: 0.956, Err: 0.090, TPR: 0.293, FNR: 0.707, TNR: 0.987, FPR: 0.013
+AWro: Base PR: 0.319, Base NR: 0.681,  PR: 0.354, NR: 0.646, Err: 0.223, TPR: 0.706, FNR: 0.294, TNR: 0.811, FPR: 0.189
+
+Predicting A
+Y=?: Base-A1-rate: 0.329, Base-A0-rate: 0.671, Pred A1-rate: 0.953, Pred-A0-rate: 0.047, Err: 0.671, A1-Correct: 0.928, A1-Wrong: 0.072, A0-Correct: 0.035, A0-Wrong: 0.965
+Y=1: Base-A1-rate: 0.148, Base-A0-rate: 0.852, Pred A1-rate: 0.995, Pred-A0-rate: 0.005, Err: 0.853, A1-Correct: 0.982, A1-Wrong: 0.018, A0-Correct: 0.002, A0-Wrong: 0.998
+Y=0: Base-A1-rate: 0.390, Base-A0-rate: 0.610, Pred A1-rate: 0.939, Pred-A0-rate: 0.061, Err: 0.610, A1-Correct: 0.922, A1-Wrong: 0.078, A0-Correct: 0.050, A0-Wrong: 0.950
+YCor: Base-A1-rate: 0.365, Base-A0-rate: 0.635, Pred A1-rate: 0.944, Pred-A0-rate: 0.056, Err: 0.635, A1-Correct: 0.923, A1-Wrong: 0.077, A0-Correct: 0.044, A0-Wrong: 0.956
+YWro: Base-A1-rate: 0.167, Base-A0-rate: 0.833, Pred A1-rate: 0.994, Pred-A0-rate: 0.006, Err: 0.834, A1-Correct: 0.978, A1-Wrong: 0.022, A0-Correct: 0.003, A0-Wrong: 0.997
+Metrics saved to ./experiments/laftr_ind_dpgan/checkpoints/Epoch_0_Valid/test_metrics.csv
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.375, Disc CE: 0.894, Ttl CE: -0.519, Class Err: 0.182 Disc Err: 0.677
+Error Rate: 0.182,  DI: 0.288, di_FP: 0.177, di_FN: 0.400
+Error Rate (A): 0.677
+Avg Ratio: 0.445, Max Ratio: 8474.912
+IF Percent with... T16: 0.655, T8: 0.683, T4: 0.710
+T2: 0.731, T1: 0.743, T.5: 0.751, T.25: 0.755
+T.1: 0.757, T.05: 0.758, T.025: 0.758, T.01: 0.759
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.245, NR: 0.755, Err: 0.182, TPR: 0.628, FNR: 0.372, TNR: 0.880, FPR: 0.120
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.043, NR: 0.957, Err: 0.090, TPR: 0.289, FNR: 0.711, TNR: 0.989, FPR: 0.011
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.343, NR: 0.657, Err: 0.226, TPR: 0.689, FNR: 0.311, TNR: 0.812, FPR: 0.188
+ACor: Base PR: 0.117, Base NR: 0.883,  PR: 0.043, NR: 0.957, Err: 0.094, TPR: 0.283, FNR: 0.717, TNR: 0.989, FPR: 0.011
+AWro: Base PR: 0.307, Base NR: 0.693,  PR: 0.341, NR: 0.659, Err: 0.224, TPR: 0.691, FNR: 0.309, TNR: 0.814, FPR: 0.186
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.954, Pred-A0-rate: 0.046, Err: 0.677, A1-Correct: 0.925, A1-Wrong: 0.075, A0-Correct: 0.032, A0-Wrong: 0.968
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.996, Pred-A0-rate: 0.004, Err: 0.846, A1-Correct: 0.996, A1-Wrong: 0.004, A0-Correct: 0.004, A0-Wrong: 0.996
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.941, Pred-A0-rate: 0.059, Err: 0.622, A1-Correct: 0.916, A1-Wrong: 0.084, A0-Correct: 0.044, A0-Wrong: 0.956
+YCor: Base-A1-rate: 0.363, Base-A0-rate: 0.637, Pred A1-rate: 0.945, Pred-A0-rate: 0.055, Err: 0.642, A1-Correct: 0.918, A1-Wrong: 0.082, A0-Correct: 0.039, A0-Wrong: 0.961
+YWro: Base-A1-rate: 0.162, Base-A0-rate: 0.838, Pred A1-rate: 0.995, Pred-A0-rate: 0.005, Err: 0.834, A1-Correct: 0.995, A1-Wrong: 0.005, A0-Correct: 0.006, A0-Wrong: 0.994
+Metrics saved to ./experiments/laftr_ind_dpgan/checkpoints/Epoch_0_Test/test_metrics.csv
+E0: ClaCE:0.432, DisCE:1.049, TtlCE:-0.617, ClaErr:0.209, DisErr:0.742, RecLoss:1.223, IndLoss:0.010; E0: ClaCE:0.374, DisCE:0.889, TtlCE:-0.515, ClaErr:0.179, DisErr:0.671, RecLoss:1.384, IndLoss:0.041
+starting Epoch 1
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E1: trained class 377, trained aud 377
+DI:  0.3104957938194275
+DP:  0.23866922
+E1: ClaCE:0.359, DisCE:0.691, TtlCE:-0.332, ClaErr:0.171, DisErr:0.433, RecLoss:1.511, IndLoss:0.076; E1: ClaCE:0.351, DisCE:0.585, TtlCE:-0.234, ClaErr:0.165, DisErr:0.280, RecLoss:1.574, IndLoss:0.107
+starting Epoch 2
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E2: trained class 377, trained aud 377
+DI:  0.09661795198917389
+DP:  0.1626161
+E2: ClaCE:0.345, DisCE:0.616, TtlCE:-0.271, ClaErr:0.160, DisErr:0.307, RecLoss:1.576, IndLoss:0.145; E2: ClaCE:0.343, DisCE:0.623, TtlCE:-0.280, ClaErr:0.162, DisErr:0.326, RecLoss:1.566, IndLoss:0.194
+starting Epoch 3
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E3: trained class 377, trained aud 377
+DI:  0.07377269864082336
+DP:  0.16872846
+E3: ClaCE:0.342, DisCE:0.619, TtlCE:-0.277, ClaErr:0.158, DisErr:0.329, RecLoss:1.544, IndLoss:0.202; E3: ClaCE:0.340, DisCE:0.611, TtlCE:-0.271, ClaErr:0.160, DisErr:0.334, RecLoss:1.496, IndLoss:0.208
+starting Epoch 4
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E4: trained class 377, trained aud 377
+DI:  0.10725919157266617
+DP:  0.13723683
+E4: ClaCE:0.340, DisCE:0.623, TtlCE:-0.283, ClaErr:0.156, DisErr:0.334, RecLoss:1.473, IndLoss:0.193; E4: ClaCE:0.346, DisCE:0.632, TtlCE:-0.285, ClaErr:0.159, DisErr:0.333, RecLoss:1.440, IndLoss:0.178
+starting Epoch 5
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E5: trained class 377, trained aud 377
+DI:  0.1056162640452385
+DP:  0.14450616
+E5: ClaCE:0.341, DisCE:0.628, TtlCE:-0.287, ClaErr:0.154, DisErr:0.330, RecLoss:1.454, IndLoss:0.180; E5: ClaCE:0.343, DisCE:0.624, TtlCE:-0.281, ClaErr:0.158, DisErr:0.329, RecLoss:1.436, IndLoss:0.182
+starting Epoch 6
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E6: trained class 377, trained aud 377
+DI:  0.12365324050188065
+DP:  0.14080691
+E6: ClaCE:0.334, DisCE:0.619, TtlCE:-0.285, ClaErr:0.152, DisErr:0.325, RecLoss:1.442, IndLoss:0.178; E6: ClaCE:0.340, DisCE:0.622, TtlCE:-0.283, ClaErr:0.158, DisErr:0.330, RecLoss:1.432, IndLoss:0.172
+starting Epoch 7
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E7: trained class 377, trained aud 377
+DI:  0.12537169456481934
+DP:  0.14372613
+E7: ClaCE:0.330, DisCE:0.619, TtlCE:-0.289, ClaErr:0.150, DisErr:0.327, RecLoss:1.454, IndLoss:0.177; E7: ClaCE:0.338, DisCE:0.624, TtlCE:-0.286, ClaErr:0.158, DisErr:0.331, RecLoss:1.452, IndLoss:0.182
+starting Epoch 8
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E8: trained class 377, trained aud 377
+DI:  0.1294664740562439
+DP:  0.13951297
+E8: ClaCE:0.329, DisCE:0.622, TtlCE:-0.294, ClaErr:0.150, DisErr:0.328, RecLoss:1.472, IndLoss:0.181; E8: ClaCE:0.339, DisCE:0.628, TtlCE:-0.289, ClaErr:0.158, DisErr:0.330, RecLoss:1.467, IndLoss:0.177
+starting Epoch 9
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E9: trained class 377, trained aud 377
+DI:  0.13607877492904663
+DP:  0.13477677
+E9: ClaCE:0.328, DisCE:0.625, TtlCE:-0.296, ClaErr:0.149, DisErr:0.327, RecLoss:1.479, IndLoss:0.172; E9: ClaCE:0.339, DisCE:0.630, TtlCE:-0.291, ClaErr:0.159, DisErr:0.330, RecLoss:1.473, IndLoss:0.168
+Finished training: min validation loss was -0.515 in epoch 0
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.341, Disc CE: 0.629, Ttl CE: -0.289, Class Err: 0.155 Disc Err: 0.327
+Error Rate: 0.155,  DI: 0.066, di_FP: 0.034, di_FN: 0.098
+Error Rate (A): 0.327
+Avg Ratio: 0.660, Max Ratio: 10976.541
+IF Percent with... T16: 0.659, T8: 0.692, T4: 0.722
+T2: 0.744, T1: 0.757, T.5: 0.764, T.25: 0.767
+T.1: 0.769, T.05: 0.770, T.025: 0.770, T.01: 0.771
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.209, NR: 0.791, Err: 0.155, TPR: 0.608, FNR: 0.392, TNR: 0.922, FPR: 0.078
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.129, NR: 0.871, Err: 0.086, TPR: 0.691, FNR: 0.309, TNR: 0.943, FPR: 0.057
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.247, NR: 0.753, Err: 0.189, TPR: 0.593, FNR: 0.407, TNR: 0.909, FPR: 0.091
+ACor: Base PR: 0.310, Base NR: 0.690,  PR: 0.247, NR: 0.753, Err: 0.189, TPR: 0.594, FNR: 0.406, TNR: 0.908, FPR: 0.092
+AWro: Base PR: 0.114, Base NR: 0.886,  PR: 0.129, NR: 0.871, Err: 0.087, TPR: 0.685, FNR: 0.315, TNR: 0.943, FPR: 0.057
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.002, Pred-A0-rate: 0.998, Err: 0.327, A1-Correct: 0.001, A1-Wrong: 0.999, A0-Correct: 0.998, A0-Wrong: 0.002
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.001, Pred-A0-rate: 0.999, Err: 0.152, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 0.998, A0-Wrong: 0.002
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.002, Pred-A0-rate: 0.998, Err: 0.384, A1-Correct: 0.001, A1-Wrong: 0.999, A0-Correct: 0.998, A0-Wrong: 0.002
+YCor: Base-A1-rate: 0.353, Base-A0-rate: 0.647, Pred A1-rate: 0.001, Pred-A0-rate: 0.999, Err: 0.354, A1-Correct: 0.001, A1-Wrong: 0.999, A0-Correct: 0.998, A0-Wrong: 0.002
+YWro: Base-A1-rate: 0.180, Base-A0-rate: 0.820, Pred A1-rate: 0.002, Pred-A0-rate: 0.998, Err: 0.182, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 0.997, A0-Wrong: 0.003
+Metrics saved to ./experiments/laftr_ind_dpgan/test_metrics.csv
+
+real  8m9.342s
+user  3m52.509s
+sys 2m44.862s
+
+
+
+
+
+
+EqOddsUnweightedGan
+
+time python src/run_laftr.py conf/transfer/laftr_ind.json -o exp_name="laftr_ind_eqoddsugan",train.n_epochs=10,model.class="EqOddsUnweightedGan" --data adult --dirs local
+{'exp_name': 'laftr_ind_eqoddsugan', 'train': {'n_epochs': '10'}, 'model': {'class': 'EqOddsUnweightedGan'}}
+opt_filename ./experiments/laftr_ind_eqoddsugan/opt.json
+done_filename_txt ./experiments/laftr_ind_eqoddsugan/done.txt
+done_filename_json ./experiments/laftr_ind_eqoddsugan/done.json
+learning reps from scratch
+y shape (30162, 2)
+changing shape
+{'xdim': 113, 'zdim': 8, 'hidden_layer_specs': {'enc': [8], 'cla': [8], 'rec': [8], 'aud': [8]}, 'seed': 0, 'recon_coeff': 0.0, 'class_coeff': 1.0, 'fair_coeff': 1.0, 'ind_coeff': 1.0, 'adim': 1, 'ydim': 1, 'hinge': 0.0, 'gp': 10.0}
+2020-05-06 23:38:54.867201: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+starting Epoch 0
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E0: trained class 377, trained aud 377
+DI:  0.0712035596370697
+DP:  0.16141349
+(6016, 1)
+(6016, 8)
+(6016, 1)
+(6016, 1)
+(6016, 1)
+(6016, 113)
+Test score: Class CE: 0.376, Disc CE: 0.684, Ttl CE: -0.308, Class Err: 0.164 Disc Err: 0.361
+Error Rate: 0.164,  DI: 0.036, di_FP: 0.063, di_FN: 0.008
+Error Rate (A): 0.361
+Avg Ratio: 0.161, Max Ratio: 1760.786
+IF Percent with... T16: 0.664, T8: 0.687, T4: 0.706
+T2: 0.719, T1: 0.726, T.5: 0.730, T.25: 0.732
+T.1: 0.734, T.05: 0.734, T.025: 0.734, T.01: 0.734
+
+Predicting Y
+A=?: Base PR: 0.251, Base NR: 0.749,  PR: 0.227, NR: 0.773, Err: 0.164, TPR: 0.626, FNR: 0.374, TNR: 0.906, FPR: 0.094
+A=1: Base PR: 0.113, Base NR: 0.887,  PR: 0.119, NR: 0.881, Err: 0.092, TPR: 0.619, FNR: 0.381, TNR: 0.944, FPR: 0.056
+A=0: Base PR: 0.318, Base NR: 0.682,  PR: 0.281, NR: 0.719, Err: 0.200, TPR: 0.627, FNR: 0.373, TNR: 0.881, FPR: 0.119
+ACor: Base PR: 0.328, Base NR: 0.672,  PR: 0.294, NR: 0.706, Err: 0.203, TPR: 0.639, FNR: 0.361, TNR: 0.874, FPR: 0.126
+AWro: Base PR: 0.113, Base NR: 0.887,  PR: 0.109, NR: 0.891, Err: 0.095, TPR: 0.561, FNR: 0.439, TNR: 0.949, FPR: 0.051
+
+Predicting A
+Y=?: Base-A1-rate: 0.329, Base-A0-rate: 0.671, Pred A1-rate: 0.062, Pred-A0-rate: 0.938, Err: 0.361, A1-Correct: 0.046, A1-Wrong: 0.954, A0-Correct: 0.931, A0-Wrong: 0.069
+Y=1: Base-A1-rate: 0.148, Base-A0-rate: 0.852, Pred A1-rate: 0.018, Pred-A0-rate: 0.982, Err: 0.163, A1-Correct: 0.009, A1-Wrong: 0.991, A0-Correct: 0.981, A0-Wrong: 0.019
+Y=0: Base-A1-rate: 0.390, Base-A0-rate: 0.610, Pred A1-rate: 0.076, Pred-A0-rate: 0.924, Err: 0.427, A1-Correct: 0.051, A1-Wrong: 0.949, A0-Correct: 0.907, A0-Wrong: 0.093
+YCor: Base-A1-rate: 0.358, Base-A0-rate: 0.642, Pred A1-rate: 0.068, Pred-A0-rate: 0.932, Err: 0.391, A1-Correct: 0.049, A1-Wrong: 0.951, A0-Correct: 0.921, A0-Wrong: 0.079
+YWro: Base-A1-rate: 0.185, Base-A0-rate: 0.815, Pred A1-rate: 0.027, Pred-A0-rate: 0.973, Err: 0.209, A1-Correct: 0.011, A1-Wrong: 0.989, A0-Correct: 0.969, A0-Wrong: 0.031
+Metrics saved to ./experiments/laftr_ind_eqoddsugan/checkpoints/Epoch_0_Valid/test_metrics.csv
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.373, Disc CE: 0.690, Ttl CE: -0.317, Class Err: 0.165 Disc Err: 0.365
+Error Rate: 0.165,  DI: 0.048, di_FP: 0.066, di_FN: 0.030
+Error Rate (A): 0.365
+Avg Ratio: 0.158, Max Ratio: 3110.436
+IF Percent with... T16: 0.668, T8: 0.691, T4: 0.710
+T2: 0.722, T1: 0.729, T.5: 0.732, T.25: 0.734
+T.1: 0.736, T.05: 0.736, T.025: 0.736, T.01: 0.736
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.221, NR: 0.779, Err: 0.165, TPR: 0.614, FNR: 0.386, TNR: 0.907, FPR: 0.093
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.113, NR: 0.887, Err: 0.093, TPR: 0.589, FNR: 0.411, TNR: 0.948, FPR: 0.052
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.274, NR: 0.726, Err: 0.200, TPR: 0.619, FNR: 0.381, TNR: 0.881, FPR: 0.119
+ACor: Base PR: 0.323, Base NR: 0.677,  PR: 0.290, NR: 0.710, Err: 0.207, TPR: 0.629, FNR: 0.371, TNR: 0.872, FPR: 0.128
+AWro: Base PR: 0.111, Base NR: 0.889,  PR: 0.101, NR: 0.899, Err: 0.093, TPR: 0.539, FNR: 0.461, TNR: 0.953, FPR: 0.047
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.062, Pred-A0-rate: 0.938, Err: 0.365, A1-Correct: 0.036, A1-Wrong: 0.964, A0-Correct: 0.925, A0-Wrong: 0.075
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.015, Pred-A0-rate: 0.985, Err: 0.164, A1-Correct: 0.004, A1-Wrong: 0.996, A0-Correct: 0.983, A0-Wrong: 0.017
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.077, Pred-A0-rate: 0.923, Err: 0.430, A1-Correct: 0.041, A1-Wrong: 0.959, A0-Correct: 0.900, A0-Wrong: 0.100
+YCor: Base-A1-rate: 0.354, Base-A0-rate: 0.646, Pred A1-rate: 0.070, Pred-A0-rate: 0.930, Err: 0.396, A1-Correct: 0.040, A1-Wrong: 0.960, A0-Correct: 0.914, A0-Wrong: 0.086
+YWro: Base-A1-rate: 0.184, Base-A0-rate: 0.816, Pred A1-rate: 0.023, Pred-A0-rate: 0.977, Err: 0.205, A1-Correct: 0.004, A1-Wrong: 0.996, A0-Correct: 0.973, A0-Wrong: 0.027
+Metrics saved to ./experiments/laftr_ind_eqoddsugan/checkpoints/Epoch_0_Test/test_metrics.csv
+E0: ClaCE:0.440, DisCE:0.681, TtlCE:-0.241, ClaErr:0.205, DisErr:0.360, RecLoss:1.221, IndLoss:0.000; E0: ClaCE:0.376, DisCE:0.684, TtlCE:-0.308, ClaErr:0.164, DisErr:0.361, RecLoss:1.270, IndLoss:0.000
+starting Epoch 1
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E1: trained class 377, trained aud 377
+DI:  0.1211862713098526
+DP:  0.15386894
+E1: ClaCE:0.359, DisCE:0.643, TtlCE:-0.284, ClaErr:0.162, DisErr:0.344, RecLoss:1.284, IndLoss:0.000; E1: ClaCE:0.350, DisCE:0.615, TtlCE:-0.265, ClaErr:0.160, DisErr:0.343, RecLoss:1.271, IndLoss:0.001
+starting Epoch 2
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E2: trained class 377, trained aud 377
+DI:  0.133495032787323
+DP:  0.13029881
+E2: ClaCE:0.342, DisCE:0.609, TtlCE:-0.267, ClaErr:0.158, DisErr:0.328, RecLoss:1.250, IndLoss:0.003; E2: ClaCE:0.344, DisCE:0.615, TtlCE:-0.270, ClaErr:0.161, DisErr:0.330, RecLoss:1.221, IndLoss:0.008
+starting Epoch 3
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E3: trained class 377, trained aud 377
+DI:  0.09562111645936966
+DP:  0.16122045
+E3: ClaCE:0.334, DisCE:0.601, TtlCE:-0.267, ClaErr:0.154, DisErr:0.321, RecLoss:1.227, IndLoss:0.011; E3: ClaCE:0.336, DisCE:0.596, TtlCE:-0.260, ClaErr:0.155, DisErr:0.327, RecLoss:1.237, IndLoss:0.012
+starting Epoch 4
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E4: trained class 377, trained aud 377
+DI:  0.09144535660743713
+DP:  0.17459297
+E4: ClaCE:0.327, DisCE:0.598, TtlCE:-0.271, ClaErr:0.151, DisErr:0.326, RecLoss:1.266, IndLoss:0.013; E4: ClaCE:0.332, DisCE:0.598, TtlCE:-0.266, ClaErr:0.155, DisErr:0.332, RecLoss:1.294, IndLoss:0.013
+starting Epoch 5
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E5: trained class 377, trained aud 377
+DI:  0.07987348735332489
+DP:  0.17652082
+E5: ClaCE:0.327, DisCE:0.610, TtlCE:-0.284, ClaErr:0.149, DisErr:0.327, RecLoss:1.322, IndLoss:0.013; E5: ClaCE:0.333, DisCE:0.620, TtlCE:-0.286, ClaErr:0.155, DisErr:0.336, RecLoss:1.351, IndLoss:0.012
+starting Epoch 6
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E6: trained class 377, trained aud 377
+DI:  0.0838196873664856
+DP:  0.1767047
+E6: ClaCE:0.326, DisCE:0.622, TtlCE:-0.297, ClaErr:0.148, DisErr:0.330, RecLoss:1.391, IndLoss:0.012; E6: ClaCE:0.332, DisCE:0.618, TtlCE:-0.286, ClaErr:0.155, DisErr:0.330, RecLoss:1.420, IndLoss:0.011
+starting Epoch 7
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E7: trained class 377, trained aud 377
+DI:  0.0751078724861145
+DP:  0.1741899
+E7: ClaCE:0.323, DisCE:0.613, TtlCE:-0.290, ClaErr:0.147, DisErr:0.327, RecLoss:1.423, IndLoss:0.013; E7: ClaCE:0.331, DisCE:0.615, TtlCE:-0.284, ClaErr:0.154, DisErr:0.334, RecLoss:1.430, IndLoss:0.015
+starting Epoch 8
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E8: trained class 377, trained aud 377
+DI:  0.09292294085025787
+DP:  0.17524512
+E8: ClaCE:0.323, DisCE:0.609, TtlCE:-0.287, ClaErr:0.146, DisErr:0.332, RecLoss:1.458, IndLoss:0.022; E8: ClaCE:0.333, DisCE:0.609, TtlCE:-0.276, ClaErr:0.155, DisErr:0.333, RecLoss:1.489, IndLoss:0.031
+starting Epoch 9
+Class DP last epoch: 100000.000; Disc DP Bound last epoch: 100000.000
+E9: trained class 377, trained aud 377
+DI:  0.07863105833530426
+DP:  0.1735103
+E9: ClaCE:0.322, DisCE:0.613, TtlCE:-0.292, ClaErr:0.146, DisErr:0.330, RecLoss:1.516, IndLoss:0.038; E9: ClaCE:0.333, DisCE:0.619, TtlCE:-0.286, ClaErr:0.153, DisErr:0.333, RecLoss:1.538, IndLoss:0.042
+Finished training: min validation loss was -0.308 in epoch 0
+(15040, 1)
+(15040, 8)
+(15040, 1)
+(15040, 1)
+(15040, 1)
+(15040, 113)
+Test score: Class CE: 0.332, Disc CE: 0.617, Ttl CE: -0.285, Class Err: 0.150 Disc Err: 0.329
+Error Rate: 0.150,  DI: 0.046, di_FP: 0.065, di_FN: 0.027
+Error Rate (A): 0.329
+Avg Ratio: 0.430, Max Ratio: 13239.420
+IF Percent with... T16: 0.672, T8: 0.683, T4: 0.689
+T2: 0.693, T1: 0.694, T.5: 0.695, T.25: 0.696
+T.1: 0.696, T.05: 0.696, T.025: 0.696, T.01: 0.696
+
+Predicting Y
+A=?: Base PR: 0.246, Base NR: 0.754,  PR: 0.221, NR: 0.779, Err: 0.150, TPR: 0.644, FNR: 0.356, TNR: 0.917, FPR: 0.083
+A=1: Base PR: 0.114, Base NR: 0.886,  PR: 0.109, NR: 0.891, Err: 0.081, TPR: 0.621, FNR: 0.379, TNR: 0.957, FPR: 0.043
+A=0: Base PR: 0.310, Base NR: 0.690,  PR: 0.275, NR: 0.725, Err: 0.183, TPR: 0.648, FNR: 0.352, TNR: 0.892, FPR: 0.108
+ACor: Base PR: 0.311, Base NR: 0.689,  PR: 0.276, NR: 0.724, Err: 0.184, TPR: 0.648, FNR: 0.352, TNR: 0.892, FPR: 0.108
+AWro: Base PR: 0.113, Base NR: 0.887,  PR: 0.108, NR: 0.892, Err: 0.081, TPR: 0.621, FNR: 0.379, TNR: 0.957, FPR: 0.043
+
+Predicting A
+Y=?: Base-A1-rate: 0.326, Base-A0-rate: 0.674, Pred A1-rate: 0.006, Pred-A0-rate: 0.994, Err: 0.329, A1-Correct: 0.005, A1-Wrong: 0.995, A0-Correct: 0.993, A0-Wrong: 0.007
+Y=1: Base-A1-rate: 0.151, Base-A0-rate: 0.849, Pred A1-rate: 0.000, Pred-A0-rate: 1.000, Err: 0.151, A1-Correct: 0.000, A1-Wrong: 1.000, A0-Correct: 1.000, A0-Wrong: 0.000
+Y=0: Base-A1-rate: 0.384, Base-A0-rate: 0.616, Pred A1-rate: 0.008, Pred-A0-rate: 0.992, Err: 0.387, A1-Correct: 0.005, A1-Wrong: 0.995, A0-Correct: 0.991, A0-Wrong: 0.009
+YCor: Base-A1-rate: 0.353, Base-A0-rate: 0.647, Pred A1-rate: 0.007, Pred-A0-rate: 0.993, Err: 0.356, A1-Correct: 0.005, A1-Wrong: 0.995, A0-Correct: 0.992, A0-Wrong: 0.008
+YWro: Base-A1-rate: 0.177, Base-A0-rate: 0.823, Pred A1-rate: 0.002, Pred-A0-rate: 0.998, Err: 0.177, A1-Correct: 0.005, A1-Wrong: 0.995, A0-Correct: 0.998, A0-Wrong: 0.002
+Metrics saved to ./experiments/laftr_ind_eqoddsugan/test_metrics.csv
+
+real  8m8.592s
+user  3m50.103s
+sys 2m43.416s

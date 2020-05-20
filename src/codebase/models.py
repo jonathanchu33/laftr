@@ -200,6 +200,23 @@ class DemParGan(AbstractBaseNet):
         ratio = tf.where(tf.less(dX, 1e-5), dX, tf.divide(dZ, dX))
         return tf.reduce_mean(tf.nn.relu(ratio - self.m), axis=1)
 
+        # ones = tf.ones_like(dX)
+        # upper_tri_mask = tf.cast(tf.matrix_band_part(ones, 0, -1) - tf.matrix_band_part(ones, 0, 0), dtye=tf.bool)
+
+        # flat_dX = tf.boolean_mask(dX, upper_tri_mask)
+        # flat_dZ = tf.boolean_mask(dZ, upper_tri_mask)
+
+        # ifairness_ratios = tf.nn.relu(flat_dZ / flat_dX - self.m)
+        # tf.mean(ifairness_ratios)
+
+        # row_norms_Z = tf.reduce_sum(tf.square(A), axis=1)
+        # row_norms_A = tf.reshape(row_norms_A, [-1, 1])  # Column vector.
+
+        # row_norms_B = tf.reduce_sum(tf.square(B), axis=1)
+        # row_norms_B = tf.reshape(row_norms_B, [1, -1])  # Row vector.
+
+        # return row_norms_A - 2 * tf.matmul(A, tf.transpose(B)) + row_norms_B
+
     def _get_weight_decay(self):
         var_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='model/aud')
         weights_norm = [tf.reduce_sum(tf.square(w)) for w in var_list]
